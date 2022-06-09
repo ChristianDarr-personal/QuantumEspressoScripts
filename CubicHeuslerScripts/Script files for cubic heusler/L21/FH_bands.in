@@ -1,0 +1,57 @@
+
+&CONTROL
+  calculation   = 'bands',
+  prefix        = 'CTS',               
+  restart_mode  = 'from_scratch',
+  verbosity     = 'high',
+  nstep         = 120, 
+  outdir        = './outdir',
+  forc_conv_thr = 1.00000e-04,
+  etot_conv_thr = 1.00000e-04, 
+/
+&SYSTEM
+  ibrav       = 2,                           
+  celldm(1)   = 11.508432099,                       
+  nat         = 4,                           
+  ntyp        = 3,                           
+  ecutwfc     = 200,                          
+  ecutrho     = 1000, 
+  nbnd        = 52,                        
+  !occupations = 'smearing',
+  !smearing    = 'gaussian',
+  !degauss     = 0.002,
+  nspin       = 2,
+  starting_magnetization(1)= 0.1,           
+  starting_magnetization(2)= 0.1,           
+  starting_magnetization(3)= 0.1,           
+/
+&ELECTRONS
+  electron_maxstep  = 200,
+  mixing_mode       = 'plain',               
+  conv_thr          = 1.00000e-06,
+  mixing_beta       = 7.00000e-01,
+  diagonalization   = 'cg',
+/
+ATOMIC_SPECIES
+Co   58.93319    Co.pbe-spn-kjpaw_psl.1.0.0.UPF    
+Ti   47.86700    Ti.pbe-spn-kjpaw_psl.1.0.0.UPF    
+Sn   118.7100    Sn.pbe-dn-kjpaw_psl.1.0.0.UPF
+
+ATOMIC_POSITIONS {alat}
+Co     0.000000000         0.000000000         0.000000000      !X_1  A and please use symbol for X-element!
+Co     0.500000000         0.500000000         0.500000000      !X_2  C and please use symbol for X-element!
+Ti     0.250000000         0.250000000         0.250000000      !Y_1  B and please use symbol for Y-element!
+Sn     0.750000000         0.750000000         0.750000000      !Z_1  D and please use symbol for Z-element!
+
+K_POINTS {crystal_b}
+10
+  0.000  0.000  0.000  300 !G
+  0.500  0.000  0.500  300 !X
+  0.500  0.250  0.750  300 !W
+  0.375  0.375  0.750  300 !K
+  0.000  0.000  0.000  300 !G
+  0.500  0.500  0.500  300 !L
+  0.625  0.250  0.625  300 !U
+  0.500  0.250  0.750  300 !W
+  0.500  0.500  0.500  300 !L
+  0.375  0.375  0.750  300 !K

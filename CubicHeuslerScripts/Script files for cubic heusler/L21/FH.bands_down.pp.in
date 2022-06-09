@@ -1,0 +1,8 @@
+&bands
+    prefix        = 'CTS',
+    outdir        = './outdir',
+    filband        = 'FH.bands_down.dat',
+    spin_component = 2,
+    lsym = .true./
+/
+/
