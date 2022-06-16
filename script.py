@@ -30,6 +30,7 @@ latticeEstimate = input("Enter estimate for lattice energy (https://oqmd.org):")
 
 inputParam = str(latticeEstimate) + " " + str(latticeEstimate + 0.001) + " " + str(latticeEstimate + 0.002)
 output = []
+# Need to find a way to replace pseudopotentials
 latticeEstimate = subprocess.run(["FH_lattice_optzm.bash", inputParam], stdout=subprocess.PIPE, text=True)
 for line in iter(latticeEstimate.stdout.readline, b''):
     output.append(float(line))
