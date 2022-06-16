@@ -8,7 +8,7 @@
 
 rm -f Full.fcc
 touch Full.fcc
-for k in 10.749349940 10.694922502 10.668016994 10.662660219 10.657311505 10.651970832 10.646638181 11.508432099
+for k in $1
 do
 cat > FH_optzm.in << EOF
 
@@ -77,7 +77,8 @@ srun pw.x < FH_optzm.in > FH_optzm.out
 # extract Etot from output
 etot=`grep -e ! FH_optzm.out | awk '{print $(NF-1)}'`
 mtot=`grep 'total magnetization' FH_optzm.out | tail -1 | awk '{print $(NF-2)}'`
-echo $k $etot $mtot >> Full.fcc
+#echo $k $etot $mtot >> Full.fcc
+echo $etot >>full.fcc
 done
 cat Full.fcc
 
