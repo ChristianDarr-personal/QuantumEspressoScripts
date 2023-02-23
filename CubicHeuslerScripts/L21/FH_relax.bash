@@ -8,7 +8,7 @@
 
 rm -f Full.fcc
 touch Full.fcc
-for k in 11.508432099
+for k in $1
 do
 cat > FH_relax.in << EOF
 
@@ -84,7 +84,9 @@ srun pw.x < FH_relax.in > FH_relax.out
 # extract Etot from output
 etot=`grep -e ! FH_relax.out | awk '{print $(NF-1)}'`
 #mtot=`grep 'total magnetization' FH_relax.out | tail -1 | awk '{print $(NF-2)}'`
+pos=`grep -e ATOMIC_POSITIONS testOutput.out -A 4 | awk '{print}'`
 echo $k $etot $mtot >> Full.fcc
+echo $pos >> Full.fcc
 done
 cat Full.fcc
 
