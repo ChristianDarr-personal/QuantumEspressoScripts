@@ -8,7 +8,7 @@
 
 rm -f FH_scf.out Full.fcc
 touch Full.fcc
-for ecut in 50 60 70 80 90 100 120 140
+for ecut in 50 60 70 80 90 100 120 140  
 do
 cat > FH_scf.in << EOF
 
